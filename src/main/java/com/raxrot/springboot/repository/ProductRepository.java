@@ -34,4 +34,21 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query(value ="SELECT * FROM products WHERE name=:name" ,nativeQuery = true)
     List<Product> findByNativeQuery(@Param("name") String name);
 
+
+
+    @Query("select p from Product p where p.sku = :sku")
+    Product findBySku(@Param("sku") String sku);
+
+    @Query("select p from Product p where p.price >= :price")
+    List<Product> findByPrice(@Param("price") BigDecimal price);
+
+    @Query("select p from Product p where p.active = true order by p.dateCreated desc")
+    List<Product> findActiveProductsOrderedByDate();
+
+    @Query("select p from Product p where lower(p.name) like lower(concat('%', :nameFragment, '%'))")
+    List<Product> findByNameContainingIgnoreCase(@Param("nameFragment") String nameFragment);
+
+    @Query("select count(p) from Product p where p.price < :price")
+    Long countByPriceLessThan(@Param("price") BigDecimal price);
+
 }
