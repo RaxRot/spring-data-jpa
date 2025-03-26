@@ -166,4 +166,49 @@ public class QueryMethodTest {
         assertThat(products.size()).isGreaterThan(0);
         assertThat(products.size()).isEqualTo(2);
     }
+
+    @Test
+    void findJPQLIndex(){
+        productRepository.save(product);
+        Product produc2=Product.builder()
+                .name("Product 2")
+                .description("Product 1 description")
+                .sku("100ABCD")
+                .price(new BigDecimal(200))
+                .active(true)
+                .imageUrl("product1.jpg")
+                .build();
+        productRepository.save(produc2);
+        List<Product>products=productRepository.findByJPQLIndexParams("Product 1",new BigDecimal(300));
+        assertThat(products).isNotNull();
+        assertThat(products.size()).isGreaterThan(0);
+        assertThat(products.size()).isEqualTo(2);
+    }
+
+    @Test
+    void findJPQLNamedParams(){
+        productRepository.save(product);
+        Product produc2=Product.builder()
+                .name("Product 2")
+                .description("Product 1 description")
+                .sku("100ABCD")
+                .price(new BigDecimal(200))
+                .active(true)
+                .imageUrl("product1.jpg")
+                .build();
+        productRepository.save(produc2);
+        List<Product>products=productRepository.findByJPQLNamedParams("Product 1",new BigDecimal(300));
+        assertThat(products).isNotNull();
+        assertThat(products.size()).isGreaterThan(0);
+        assertThat(products.size()).isEqualTo(2);
+    }
+
+    @Test
+    void findNativeQuery(){
+        productRepository.save(product);
+        List<Product>products=productRepository.findByNativeQuery("Product 1");
+        assertThat(products).isNotNull();
+        assertThat(products.size()).isGreaterThan(0);
+        assertThat(products.size()).isEqualTo(1);
+    }
 }
