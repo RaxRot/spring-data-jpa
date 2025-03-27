@@ -25,7 +25,8 @@ public class Order {
     @UpdateTimestamp
     private LocalDateTime dateUpdated;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "billing_address_id",referencedColumnName = "id")
     private Address billingAddress;
+
 }
