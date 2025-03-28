@@ -14,15 +14,18 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "students")
+public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String firstName;
+    private String lastName;
+    private int age;
 
-    @ManyToMany(mappedBy = "roles",
-            cascade = {CascadeType.PERSIST,CascadeType.REMOVE},
-            fetch = FetchType.EAGER)
-    private Set<User> users = new HashSet<>();
+    @ManyToMany
+    @JoinTable(name = "students_corses",
+    joinColumns = @JoinColumn(name = "student_id"),
+    inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private Set<Course> courses=new HashSet<>();
 }

@@ -6,23 +6,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "courses")
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String title;
+    private int duration;
 
-    @ManyToMany(mappedBy = "roles",
-            cascade = {CascadeType.PERSIST,CascadeType.REMOVE},
-            fetch = FetchType.EAGER)
-    private Set<User> users = new HashSet<>();
+    @ManyToMany(mappedBy = "courses")
+    private List<Student>students=new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
 }
