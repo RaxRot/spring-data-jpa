@@ -1,6 +1,6 @@
 package com.raxrot.springboot.repository;
 
-import com.raxrot.springboot.entity.Product;
+import com.raxrot.springboot.entity.MyTests.Product;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

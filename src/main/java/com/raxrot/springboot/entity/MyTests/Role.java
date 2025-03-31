@@ -1,4 +1,4 @@
-package com.raxrot.springboot.entity;
+package com.raxrot.springboot.entity.MyTests;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,17 +14,15 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "consumers")
-public class Consumer {
+@Table(name = "roles")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String userName;
-    private String email;
+    private String name;
 
-    @OneToMany(mappedBy = "consumer")
-    private Set<Article> articles=new HashSet<>();
-
-    @OneToMany(mappedBy = "consumer")
-    private Set<Comment> comments=new HashSet<>();
+    @ManyToMany(mappedBy = "roles",
+            cascade = {CascadeType.PERSIST,CascadeType.REMOVE},
+            fetch = FetchType.EAGER)
+    private Set<User> users = new HashSet<>();
 }

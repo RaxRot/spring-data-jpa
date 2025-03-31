@@ -1,4 +1,4 @@
-package com.raxrot.springboot.entity;
+package com.raxrot.springboot.entity.MyTests;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,15 +14,18 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "banks")
-public class Bank {
+@Table(name = "accounts")
+public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String iban;
+    private double balance;
 
-    private String name;
-    private String bicCode;
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
-    @OneToMany(mappedBy = "bank")
-    private Set<Client>clients=new HashSet<>();
+    @OneToMany(mappedBy = "account")
+    private Set<Card>cards=new HashSet<>();
 }

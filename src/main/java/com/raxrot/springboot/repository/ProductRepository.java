@@ -1,6 +1,6 @@
 package com.raxrot.springboot.repository;
 
-import com.raxrot.springboot.entity.Product;
+import com.raxrot.springboot.entity.MyTests.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

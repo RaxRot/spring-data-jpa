@@ -1,7 +1,7 @@
 package com.raxrot.springboot.repository;
 
-import com.raxrot.springboot.entity.Role;
-import com.raxrot.springboot.entity.User;
+import com.raxrot.springboot.entity.MyTests.Role;
+import com.raxrot.springboot.entity.MyTests.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

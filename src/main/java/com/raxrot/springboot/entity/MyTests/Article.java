@@ -1,4 +1,4 @@
-package com.raxrot.springboot.entity;
+package com.raxrot.springboot.entity.MyTests;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.raxrot.springboot.entity;
+package com.raxrot.springboot.entity.MyTests;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,16 +14,20 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "comments")
-public class Comment {
+@Table(name = "transactions")
+public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String text;
+    private double amount;
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "consumer_id")
-    private Consumer consumer;
+    @JoinColumn(name = "sender_id")
+    private Account senderAccount;
+
+    @ManyToOne
+    @JoinColumn(name = "receiver_id")
+    private Account receiverAccount;
 }

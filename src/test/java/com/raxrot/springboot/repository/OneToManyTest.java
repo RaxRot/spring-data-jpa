@@ -1,9 +1,9 @@
 package com.raxrot.springboot.repository;
 
-import com.raxrot.springboot.entity.Address;
-import com.raxrot.springboot.entity.Order;
-import com.raxrot.springboot.entity.OrderItem;
-import com.raxrot.springboot.entity.Product;
+import com.raxrot.springboot.entity.MyTests.Address;
+import com.raxrot.springboot.entity.MyTests.Order;
+import com.raxrot.springboot.entity.MyTests.OrderItem;
+import com.raxrot.springboot.entity.MyTests.Product;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
